@@ -30,7 +30,8 @@ const btnsAddToCartandRemoveFromCart = async () =>{
     const userCart = await (await fetch('/user/data')).json()
     const userCartId = userCart.cart[0]
 
-    const listProd = await (await fetch('/api/productos')).json()
+    const listProd = await (await fetch(`/api${window.location.pathname}`)).json()
+
 
     for (let index = 0; index < document.getElementsByClassName('btnComprar').length; index++) {
         const btnAddprod = `<button class="btn btn-primary fw-bold" onclick="return addToCart('${listProd[index]._id}', '${userCartId}')">Add</button>`;
